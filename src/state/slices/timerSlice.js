@@ -33,9 +33,10 @@ const timerSlice = createSlice({
         decrementMin: (state) => {
             if (state.min === 0) {
                 if (state.hour === 0) {
-                    return; // do nothig
+                    // do nothing
                 } else {
-                    state.min == 59;
+                    state.min = 59;
+                    state.hour -= 1;
                 }
             } else {
                 state.min -= 1;
@@ -60,11 +61,11 @@ const timerSlice = createSlice({
             if (state.sec === 0) {
                 if (state.min === 0) {
                     if (state.hour === 0) {
-                        return; // do nothing
+                        // do nothing
                     } else {
                         state.hour -= 1;
-                        state.min = 0;
-                        state.sec = 0;
+                        state.min = 59;
+                        state.sec = 59;
                     }
                 } else {
                     state.min -= 1;
